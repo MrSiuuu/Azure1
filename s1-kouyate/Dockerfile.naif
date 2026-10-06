@@ -1,0 +1,25 @@
+﻿# VARIANTE NAIVE - experience B de la partie 3.5. Ne pas utiliser en production.
+#
+# Un seul COPY, place AVANT l'installation. Consequence : toute modification
+# d'un fichier du contexte (y compris app.py) invalide la couche COPY, donc la
+# couche RUN pip install qui la suit. pip est rejoue a chaque edition de code.
+
+FROM python:3.12.7-slim-bookworm
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Le mauvais geste : tout le contexte copie d'un coup, avant l'installation.
+COPY . ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN useradd --create-home --uid 10001 appuser \
+ && chown -R appuser:appuser /app
+
+USER appuser
+
+EXPOSE 8000
+
+CMD ["python", "app.py"]
