@@ -1,0 +1,19 @@
+# Exclusions minimales demandees par l'enonce (3.2)
+__pycache__/
+*.pyc
+.git/
+.venv/
+README.md
+
+# Ajouts : tout ce qui n'est pas du code n'a rien a faire dans le contexte
+# envoye au demon Docker.
+*.pyo
+*.pyd
+.gitignore
+.env
+*.ipynb_checkpoints
+captures/
+MESURES.md
+FICHE_IDENTITE.md
+reponses_partie1.md
+Dockerfile.naif
