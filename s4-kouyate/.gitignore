@@ -1,0 +1,5 @@
+.venv/
+donnees/
+__pycache__/
+*.jpg
+paquet_modele_s4.zip
