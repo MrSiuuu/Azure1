@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.venv/
+.env
+data/
+captures/
+*.md
+*.bak
+explorer.py
+entrainer.py
+tester_api.py
+charge.json
+**/*.pt

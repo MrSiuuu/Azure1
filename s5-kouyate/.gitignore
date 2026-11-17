@@ -1,0 +1,5 @@
+donnees/
+**/*.pt
+**/*.zip
+**/*.npy
+__pycache__/
