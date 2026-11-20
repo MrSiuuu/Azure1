@@ -16,8 +16,8 @@ Le découpage se fait par patient : on tire 25 % des patients, pas 25 % des lign
 - Run : fcad9f897124444eb86f9eae63e96b58
 
 ## Q1.2
-Seuil de reference-g42 : 0.2864. Le seuil du modèle de S2 est dans son paquet de modèle (pas dans un fichier texte) : comparaison à compléter.
-S'il est identique, la chaîne est reproductible (mêmes données, même découpage, même graine, même code). S'il diffère, l'un de ces éléments (découpage, graine, versions de librairies, prétraitement) a changé et le résultat n'est pas rejouable à l'identique.
+Seuil de reference-g42 : 0.2864 ; seuil du modèle de S2 : 0.3476 (lu dans son paquet de modèle). Ils diffèrent.
+Cette différence ne prouve pas à elle seule que la chaîne est cassée : je n'ai pas rejoué S2 sur le découpage du manifeste, donc je ne peux pas séparer un changement de découpage d'un défaut de rejouabilité. Elle montre surtout que le seuil dépend du jeu de test : en S6 il passe de 0.2864 (graine 42) à 0.4902 (graine 7) pour la même approche. Pour tester la reproductibilité, il faut rejouer la même graine sur le même découpage et attendre un seuil identique.
 
 ## Mesure 3
 - Métriques et paramètres lisibles : oui (5 métriques, 7 paramètres)
@@ -48,7 +48,7 @@ S'il est identique, la chaîne est reproductible (mêmes données, même découp
 ## Q1.4
 L'écart entre approches (+0.033 à la graine 42, -0.019 à la graine 7) ne dépasse pas la plus grande variation d'une même approche (0.037) et change de signe : selon mon tableau de décisions, ce n'est pas un écart réel.
 Je ne déclare donc pas de meilleure approche sur la PR-AUC et je tranche sur le coût : la variante s'entraîne en 3-4 s contre 14-38 s pour la référence, je promeus la variante.
-(À compléter : ce que j'attendais, et si ce résultat le contredit.)
+Je m'attendais à ce que la variante (boosting) batte nettement la référence (régression logistique). Le résultat contredit cette attente : l'écart de PR-AUC est du bruit (signes opposés selon la graine), pas un vrai avantage.
 
 ## Mesure 6
 - Version promue : dermascan-tabulaire v2 (run variante-g42), validée par Issa Kouyaté
